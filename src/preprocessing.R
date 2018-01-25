@@ -7,6 +7,13 @@ CV = function(x){
   return(cv)
 }
 
+"""A function to remove all columns with mean == 0"""
+remove_NaN = function(x){
+    cv = apply(x,2,CV)	#applying the CV(x) function
+    x[,which(cv == 'NaN')] = NULL 	#remove all features with mean == 0
+    return(x)
+}
+
 """A function for Miller's test statistic"""
 Miller = function(x){
     c_0 = 1/3	 	#c_0 to represent population Coefficient of Variation
