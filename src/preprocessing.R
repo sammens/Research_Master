@@ -2,6 +2,7 @@
 
 """A function for Coefficient of Variation"""
 CV = function(x){
+  #input is a matrix
   #sd for standard deviation
   cv = (sd(x)/mean(x))
   return(cv)
@@ -9,7 +10,7 @@ CV = function(x){
 
 """A function to remove all columns with mean == 0"""
 remove_NaN = function(x){
-    #input has to be a dataframe for the function to work
+    #input is a matrix
     cv = apply(x,2,CV)	#applying the CV(x) function
     x = x[,-which(cv == 'NaN')] 	#remove all features with mean == 0
     return(x)
@@ -17,6 +18,7 @@ remove_NaN = function(x){
 
 """A function for Miller's test statistic"""
 Miller = function(x){
+    #input is a matrix
     c_0 = 1/3	 	#c_0 to represent population Coefficient of Variation
     m = length(x) - 1	#length of sample
     cv = CV(x) 		#using the Coefficient of Variation function
