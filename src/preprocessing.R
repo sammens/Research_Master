@@ -9,8 +9,9 @@ CV = function(x){
 
 """A function to remove all columns with mean == 0"""
 remove_NaN = function(x){
+    #input has to be a dataframe for the function to work
     cv = apply(x,2,CV)	#applying the CV(x) function
-    x[,which(cv == 'NaN')] = NULL 	#remove all features with mean == 0
+    x = x[,-which(cv == 'NaN')] 	#remove all features with mean == 0
     return(x)
 }
 
