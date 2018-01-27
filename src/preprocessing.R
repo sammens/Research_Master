@@ -23,6 +23,6 @@ Miller = function(x){
     m = length(x) - 1	#length of sample
     cv = CV(x) 		#using the Coefficient of Variation function
     z = ((sqrt(m)) * (cv - c_0))/(sqrt(c_0 * (0.5 + c_0**2))) #Miller's statistic
-    decision = z < 1.96	#deciding null hypothesis 
+    decision = z > 1.64	#deciding null hypothesis 
     return(decision)
 }
