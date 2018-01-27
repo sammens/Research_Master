@@ -26,3 +26,12 @@ Miller = function(x){
     decision = z > 1.64	#deciding null hypothesis 
     return(decision)
 }
+
+"""A function to return all written functions"""
+all.func = function(x){
+    #using remove_NaN to remove all columns with mean == 0
+    x = remove_NaN(x)
+    #applying Miller's test after removing coloumns with mean == 0
+    mil = apply(x,2,Miller)
+    return(list('data' = x, 'Miller' = mil))
+}
