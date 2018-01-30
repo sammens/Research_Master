@@ -8,7 +8,7 @@ histplot = function(x, r, co, st){
      #st is which index to start
      #sp is which index to stop
      par(mfrow = c(r,co))
-     for(i in st:(st + 19)){
+     for(i in st:(st + ((r*co)-1)){
          graphs = hist(x[,i])
      }
      graphs
