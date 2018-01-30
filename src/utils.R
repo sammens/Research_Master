@@ -1,4 +1,4 @@
-""""Contributor: Samuel Ofosu Mensah"""
+"""Contributor: Samuel Ofosu Mensah"""
 
 """A function to plot multiple histograms"""
 histplot = function(x, r, co, st){
