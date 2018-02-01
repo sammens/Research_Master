@@ -36,6 +36,7 @@ rnd = function(x){
 
 """A function to generate 'x' data for SAMseq"""
 gen_xdata = function(x){
+  x = remove_NaN(x)
   Miller.test = apply(x,2,Miller)
   x = x[,which(Miller.test == TRUE)]
   x = apply(x,2,rnd)
