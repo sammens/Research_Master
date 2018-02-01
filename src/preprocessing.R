@@ -10,6 +10,7 @@ CV = function(x){
 
 """A function to remove all columns with mean == 0"""
 remove_NaN = function(x){
+  x = data.frame(x)
   #where x is the input is a matrix
   cv = apply(x,2,CV)	#applying the CV(x) function
   x = x[,-which(cv == 'NaN')] 	#remove all features with mean == 0
