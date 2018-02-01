@@ -27,6 +27,19 @@ Miller = function(x){
     return(decision)
 }
 
+"""A function to round-up real numbers to integers"""
+rnd = function(x){
+  x = trunc(x + sign(x) * 0.5)
+  return(x)
+}
+
+"""A function to generate data for SAMseq"""
+gen_data = function(x){
+  x = apply(x,2,rnd)
+  x = t(x)
+  return(x)
+}
+
 
 """A function to return all written functions"""
 all.func = function(x){
