@@ -36,7 +36,10 @@ rnd = function(x){
 
 """A function to generate 'x' data for SAMseq"""
 gen_xdata = function(x){
+  Miller.test = apply(x,2,Miller)
+  x = x[,which(Miller.test == TRUE)]
   x = apply(x,2,rnd)
+  mode(x) = 'integer'
   x = t(x)
   return(x)
 }
