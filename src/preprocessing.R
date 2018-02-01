@@ -33,10 +33,20 @@ rnd = function(x){
   return(x)
 }
 
-"""A function to generate data for SAMseq"""
-gen_data = function(x){
+"""A function to generate 'x' data for SAMseq"""
+gen_xdata = function(x){
   x = apply(x,2,rnd)
   x = t(x)
+  return(x)
+}
+
+"""A function to generate 'y' data for SAMseq"""
+gen_ydata = function(x){
+  x = x$groups
+  x = as.character(x)
+  x[x == 'tumour'] = 1
+  x[x == 'normal'] = 2
+  x = as.numeric(x)
   return(x)
 }
 
