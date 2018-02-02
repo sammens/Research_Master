@@ -56,6 +56,15 @@ gen_ydata = function(x){
   return(x)
 }
 
+"""A function to combine the required data"""
+list.data = function(df){
+  x = df[,-c(1,2)]
+  x = gen_xdata(x)
+  geneid = as.character(1:nrow(x))
+  genenames = row.names(x)
+  data = list(x = x, y = gen_ydata(df), geneid = geneid, genenames = genenames = genenames)
+  return(data)
+}
 
 """A function to return all written functions"""
 all.func = function(x){
