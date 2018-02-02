@@ -59,12 +59,12 @@ gen_ydata = function(x){
 }
 
 ### A function to combine the required data
-list.data = function(df){
-  x = df[,-c(1,2)]
-  x = gen_xdata(x)
-  geneid = as.character(1:nrow(x))
-  genenames = row.names(x)
-  data = list(x = x, y = gen_ydata(df), geneid = geneid, genenames = genenames = genenames)
+list.data = function(x){
+  xx = x[,-c(1,2)]
+  xx = gen_xdata(xx)
+  geneid = as.character(1:nrow(xx))
+  genenames = row.names(xx)
+  data = list(x = xx, y = gen_ydata(x), geneid = geneid, genenames = genenames)
   return(data)
 }
 
