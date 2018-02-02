@@ -1,6 +1,8 @@
-"""Contributor: Samuel Ofosu Mensah"""
+##############################################################
+#  Contributor: Samuel Ofosu Mensah
+##############################################################
 
-"""A function for Coefficient of Variation"""
+### A function for Coefficient of Variation
 CV = function(x){
   #where x is the input is a matrix
   #sd for standard deviation
@@ -8,7 +10,7 @@ CV = function(x){
   return(cv)
 }
 
-"""A function to remove all columns with mean == 0"""
+### A function to remove all columns with mean == 0
 remove_NaN = function(x){
   x = data.frame(x)
   #where x is the input is a matrix
@@ -17,7 +19,7 @@ remove_NaN = function(x){
   return(x)
 }
 
-"""A function for Miller's test statistic"""
+### A function for Miller's test statistic
 Miller = function(x){
   #where x is the input is a matrix
   c_0 = 1/3	 	#c_0 to represent population Coefficient of Variation
@@ -29,13 +31,13 @@ Miller = function(x){
 }
 
 
-"""A function to round-up real numbers to integers"""
+### A function to round-up real numbers to integers
 rnd = function(x){
   x = trunc(x + sign(x) * 0.5)
   return(x)
 }
 
-"""A function to generate 'x' data for SAMseq"""
+### A function to generate 'x' data for SAMseq
 gen_xdata = function(x){
   x = remove_NaN(x)
   Miller.test = apply(x,2,Miller)
@@ -46,7 +48,7 @@ gen_xdata = function(x){
   return(x)
 }
 
-"""A function to generate 'y' data for SAMseq"""
+### A function to generate 'y' data for SAMseq
 gen_ydata = function(x){
   x = x$groups
   x = as.character(x)
@@ -56,7 +58,7 @@ gen_ydata = function(x){
   return(x)
 }
 
-"""A function to combine the required data"""
+### A function to combine the required data
 list.data = function(df){
   x = df[,-c(1,2)]
   x = gen_xdata(x)
@@ -66,7 +68,7 @@ list.data = function(df){
   return(data)
 }
 
-"""A function to return all written functions"""
+### A function to return all written functions
 all.func = function(x){
   #using remove_NaN to remove all columns with mean == 0
   x = remove_NaN(x)
