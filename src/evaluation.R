@@ -5,4 +5,5 @@
 ## Applying the SAMseq function
 
 library(samr)
-samfit = SAMseq(x = data$x, y = data$y, resp.type = "Two class unpaired", geneid = data$geneid, genenames = data$genenames)
+trace('samr.estimate.depth', edit = TRUE)
+samfit = SAMseq(x = mydata$x, y = mydata$y, resp.type = "Two class unpaired", geneid = mydata$geneid, genenames = mydata$genenames)
