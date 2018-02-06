@@ -11,7 +11,8 @@ histplot = function(x, r, co, st){
   #sp is which index to stop
   par(mfrow = c(r,co))
   for(i in st:(st + ((r*co)-1))){
-    graphs = hist(x[,i])
+    graphs = hist(x[,i], xlab = "Gene", main = paste('Histogram of ', rownames(x)[i]))
   }
-  graphs  
+  graphs
 }
+
