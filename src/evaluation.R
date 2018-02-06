@@ -2,7 +2,7 @@
 #  Contributor: Samuel Ofosu Mensah
 ###############################################################
 
-## Applying the SAMseq function
+### Applying the SAMseq function
 
 library(samr)
 trace('samr.estimate.depth', edit = TRUE)
