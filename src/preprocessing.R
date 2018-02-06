@@ -19,7 +19,7 @@ clean_data = function(x){
 sampletwt = function(x){
   # input is processed data
   s <- as.numeric(substr(unlist(strsplit(x, '-', fixed = TRUE))[4],1,2)) #function method
-  #if statement to select T, N, and C
+  # if statement to select T, N, and C
   # tumour: 1 to 9 
   # normal: 10 to 19
   # control: 20 to 29
@@ -51,7 +51,7 @@ CV = function(x){
 
 ### A function to remove all columns with mean == 0
 remove_NaN = function(x){
-  #where x is the input is a matrix
+  # where x is the input is a matrix
   x = data.frame(x)
   cv = apply(x,2,CV)	   	#applying the CV(x) function
   x = x[,-which(cv == 'NaN')] 	#remove all features with mean == 0
@@ -60,7 +60,7 @@ remove_NaN = function(x){
 
 ### A function for Miller's test statistic
 Miller = function(x){
-  #where x is the input is a matrix
+  # where x is the input is a matrix
   c_0 = 1/3	 		#c_0 to represent population Coefficient of Variation
   m = length(x) - 1		#length of sample
   cv = CV(x) 			#using the Coefficient of Variation function
@@ -109,9 +109,9 @@ list.data = function(x){
 
 ### A function to return all written functions
 all.func = function(x){
-  #using remove_NaN to remove all columns with mean == 0
+  # using remove_NaN to remove all columns with mean == 0
   x = remove_NaN(x)
-  #applying Miller's test after removing coloumns with mean == 0
+  # applying Miller's test after removing coloumns with mean == 0
   mil = apply(x,2,Miller)
   return(list('data' = x, 'Miller' = mil))
 }
