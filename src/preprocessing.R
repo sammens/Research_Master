@@ -2,24 +2,24 @@
 #  Contributor: Samuel Ofosu Mensah
 ##############################################################
 
-### A function to clean TCGA dataset
+### A function to clean dataset
 clean_data = function(x){
-  # input is unprocessed data from TCGA
-  BrcaHeader = names(x)		#names of data
-  Patient_Id = BrcaHeader[1]	#Patient ID
-  BrcaHeader = BrcaHeader[-1]	#gene names
-  BrcaHeader = unlist(strsplit(BrcaHeader, '|', fixed=T))  #splitting characters on either sides of '|' in the header
-  BrcaHeader = BrcaHeader[seq(1,length(BrcaHeader),2)]	#removing numbers
-  names(x) = c(Patient_Id, BrcaHeader)	#changing the header names of the data
-  x = x[, !grepl("\\?", names(x))]	#removing all genes starting with "?"
+  # input is unprocessed data 
+  Header = names(x)	#names of data
+  ID = Header[1]	#ID
+  Header = Header[-1]	#matrix names
+  Header = unlist(strsplit(Header, '|', fixed=T))  #splitting characters on either sides of '|' in the header
+  Header = Header[seq(1,length(Header),2)]	#removing numbers
+  names(x) = c(ID, Header)			#changing the header names of the data
+  x = x[, !grepl("\\?", names(x))]		#removing all colnames starting with "?"
   return(x)
 }
 
-### A function to label samples as tumour or normal
+### A function to label samples as T or N
 sampletwt = function(x){
-  # input is processed data from TCGA
+  # input is processed data
   s <- as.numeric(substr(unlist(strsplit(x, '-', fixed = TRUE))[4],1,2)) #function method
-  #if statement to select tumour, normal, and control
+  #if statement to select T, N, and C
   # tumour: 1 to 9 
   # normal: 10 to 19
   # control: 20 to 29
@@ -34,9 +34,9 @@ sampletwt = function(x){
 
 ### A function to apply "sampletwt"
 label.data = function(x){
-  # input is processed data from TCGA  
-  catpatients = apply(x[1], 1, sampletwt)	#list of all categories
-  x = as.data.frame(append(x, list(groups=catpatients), after = 1))   #adding 'catpatients' to x
+  # input is processed data
+  cat = apply(x[1], 1, sampletwt)	#list of all categories
+  x = as.data.frame(append(x, list(groups=cat), after = 1))   #adding 'cat' to x
   return(x)
 }
 
