@@ -15,6 +15,31 @@ clean_data = function(x){
   return(x)
 }
 
+### A function to label samples as tumour or normal
+sampletwt = function(x){
+  # input is processed data from TCGA
+  s <- as.numeric(substr(unlist(strsplit(x, '-', fixed = TRUE))[4],1,2)) #function method
+  #if statement to select tumour, normal, and control
+  # tumour: 1 to 9 
+  # normal: 10 to 19
+  # control: 20 to 29
+  if(s %in% 1:9) {
+    return("tumour")
+  } else if(s %in% 10:19) {
+      return("normal")
+  } else {
+      return("control")
+    }
+}
+
+### A function to apply "sampletwt"
+label.data = function(x){
+  # input is processed data from TCGA  
+  catpatients = apply(x[1], 1, sampletwt)	#list of all categories
+  x = as.data.frame(append(x, list(groups=catpatients), after = 1))   #adding 'catpatients' to x
+  return(x)
+}
+
 
 ### A function for Coefficient of Variation
 CV = function(x){
